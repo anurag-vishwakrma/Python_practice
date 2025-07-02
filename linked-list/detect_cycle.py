@@ -7,16 +7,30 @@ class LinkNode:
         self.val = val
         self.nxt = nxt
 
+    # @staticmethod
+    # def is_loop_exist(node):
+    #     visited = set()
+    #     current = node
+    #     while current:
+    #         if current in visited:
+    #             print("Loop exists.")
+    #             return True
+    #         visited.add(current)
+    #         current = current.nxt
+    #     print("Loop does not exist.")
+    #     return False
+
+    # Floyd's Tortoise and Hare Algorithm
     @staticmethod
     def is_loop_exist(node):
-        visited = set()
-        current = node
-        while current:
-            if current in visited:
+        slow = node
+        fast = node
+        while fast and fast.nxt:
+            fast = fast.nxt.nxt
+            slow = slow.nxt
+            if slow == fast:
                 print("Loop exists.")
                 return True
-            visited.add(current)
-            current = current.nxt
         print("Loop does not exist.")
         return False
 
