@@ -4,6 +4,7 @@ class LinkNode:
         self.val = val
         self.nxt = nxt
 
+    # Floyd's Tortoise and Hare Algorithm
     @staticmethod
     def remove_cycle(head):
         slow = head
