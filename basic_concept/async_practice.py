@@ -1,19 +1,26 @@
+# Producer-Consumer Problem
 import asyncio
+import random
 
-async def print_no():
-    for num in range(1,6):
-        await asyncio.sleep(1)
-        print(f"Number:{num}")
+queue = asyncio.Queue()
 
-async def print_letter():
-    for letter in range(ord("A"), ord("F")):
-        await asyncio.sleep(1)
-        print(f"Letter:{chr(letter)}")
+async def producer():
+    for i in range(1,6):
+        await asyncio.sleep(random.uniform(0.5,1.5))
+        item = f"Item-{i}"
+        await queue.put(item)
+        print(f"Produced:{item}")
+    await queue.put(None)
+
+async def consumer():
+    while True:
+        item = await queue.get()
+        if item is None:  # Exit signal
+            break
+        print(f"Consumed: {item}")
+        await asyncio.sleep(random.uniform(2, 3))  # Simulate processing
 
 async def main():
-    await asyncio.gather(
-        print_no(),
-        print_letter()
-    )
+    await asyncio.gather(producer(), consumer())
 
 asyncio.run(main())
