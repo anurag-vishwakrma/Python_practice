@@ -5,14 +5,15 @@ def get_sub_string(strg):
     for i in range(0, len(strg)):
         sec_largest = ""
         for j in range(i, len(strg)):
-            largest = sec_largest if len(largest) < len(sec_largest) else largest
             if strg[j] not in sec_largest:
                 sec_largest = sec_largest + strg[j]
+                largest = sec_largest if len(largest) < len(sec_largest) else largest
             else:
+                largest = sec_largest if len(largest) < len(sec_largest) else largest
                 sec_largest = ""
 
     return largest
 
 
 
-print(get_sub_string("abcadfrgthy"))
+print(get_sub_string("pwwkew"))
