@@ -20,6 +20,7 @@ class LinkNode:
         current = head
         per = None
 
+
         while current:
             nxt = current.nxt
             current.nxt = per
