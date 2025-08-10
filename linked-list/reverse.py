@@ -21,7 +21,6 @@ class LinkNode:
         per = None
         ## test
 
-
         while current:
             nxt = current.nxt
             current.nxt = per
