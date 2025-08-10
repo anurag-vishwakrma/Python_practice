@@ -19,6 +19,7 @@ class LinkNode:
     def reverse_linked_list(head):
         current = head
         per = None
+        ## test
 
 
         while current:
